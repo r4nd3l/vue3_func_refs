@@ -1,6 +1,6 @@
-# vue3_01_preset
+# vue3_func_refs_custom_data_structures
 
-May rewrite the project name in `package.json` of `"name": "vue3_01_preset",`
+May rewrite the project name in `package.json` of `"name": "vue3_func_refs_custom_data_structures",`
 
 Also `CTRL+SHIFT+F` to search for another paths in dirs
 
