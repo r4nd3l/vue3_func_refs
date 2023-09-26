@@ -1,59 +1,41 @@
 <template>
-  <div class="bg-gray-800 h-screen text-white">
-    <header class="py-16">
-      <h1 class="border border-blue-500">Hola Kolbas</h1>
-      <h1 class="text-5xl font-bold text-center mb-6">Create Tailwind</h1>
-      <p className="text-center mb-6 text-xl">
-        If you like this project, consider giving it a star on GitHub!
-      </p>
-
-      <div class="flex flex-row justify-center items-center gap-4">
-        <a
-          class="github-button"
-          href="https://github.com/andrejjurkin/create-tw"
-          data-color-scheme="no-preference: dark; light: dark; dark: dark;"
-          data-icon="octicon-star"
-          data-size="large"
-          data-show-count="true"
-          aria-label="Star andrejjurkin/create-tw on GitHub"
+  <main
+    class="min-h-screen w-screen flex flex-col gap-10 items-center justify-center bg-gray-300"
+  >
+    <section class="w-full max-w-sm flex flex-col gap-4">
+      <h2 class="text-sm text-gray-600 font-semibold uppercase tracking-widest">
+        Grid
+      </h2>
+      <div
+        class="flex flex-col items-center justify-center p-6 gap-2 rounded shadow-md bg-white"
+      >
+        <div
+          v-for="(row, rowIndex) in tableMetadata"
+          :key="row[0]"
+          class="grid grid-cols-3 gap-2"
         >
-          Star
-        </a>
-        <a
-          class="github-button"
-          href="https://github.com/andrejjurkin/create-tw/discussions"
-          data-color-scheme="no-preference: dark; light: dark; dark: dark;"
-          data-icon="octicon-comment-discussion"
-          data-size="large"
-          aria-label="Discuss andrejjurkin/create-tw on GitHub"
-        >
-          Discuss
-        </a>
+          <div
+            v-for="(cell, columnIndex) in row"
+            :key="cell"
+            :ref="(el) => cellsRef(el, rowIndex, columnIndex)"
+            class="p-1 line-clamp-1 bg-screen-200 text-green-900 rounded bg-green-300"
+          >
+            {{ cell }}
+          </div>
+        </div>
       </div>
-    </header>
-
-    <div class="flex gap-16 items-center justify-center">
-      <a href="https://vitejs.dev" target="_blank">
-        <img src="/vite.svg" class="w-24 h-24" alt="Vite logo" />
-      </a>
-      <a href="https://vuejs.org/" target="_blank">
-        <img src="./assets/vue.svg" class="w-24 h-24" alt="Vue logo" />
-      </a>
-    </div>
-  </div>
+    </section>
+  </main>
 </template>
 
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import { onMounted } from "vue";
+import { useGrid } from "./useGrid";
 
-onMounted(() => {
-  const script = document.createElement("script");
+const tableMetadata = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+];
 
-  script.src = "https://buttons.github.io/buttons.js";
-  script.async = true;
-
-  document.body.appendChild(script);
-});
+const cellsRef = useGrid();
 </script>
