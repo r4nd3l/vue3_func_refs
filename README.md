@@ -1,4 +1,4 @@
-# vue3_func_refs
+# vue3_func_refs_custom_data_structures
 
 ## Project setup
 
